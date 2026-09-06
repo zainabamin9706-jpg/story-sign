@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap");
+
+@import "tailwindcss";
+.mantine-BarChart-axisLabel,
+.mantine-LineChart-axisLabel {
+  fill: #CCCCCC !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
