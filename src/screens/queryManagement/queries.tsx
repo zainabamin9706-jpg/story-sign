@@ -7,9 +7,9 @@ import { IoFunnelOutline } from "react-icons/io5";
 import { RiUserForbidLine } from "react-icons/ri";
 import { queries } from "./data/queriesData";
 import { Queries } from "./types/Queries";
-import CardLayout from "../cardLayout";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const Queries = () => {
   const [queryList, setQueryList] = useState<Queries[]>(queries);

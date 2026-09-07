@@ -7,11 +7,11 @@ import booklist from "../../assets/booklist.png";
 import listcancel from "../../assets/listcancel.png";
 import signedbook from "../../assets/signedbook.png";
 import unsignedbook from "../../assets/unsignedbook.png";
-import CardLayout from "../cardLayout";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { ebooks } from "./data/ebookData";
 import { Ebooks } from "./types/Ebooks";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const EbookManagement = () => {
   const [ebookList, setEbookList] = useState<Ebooks[]>(ebooks);
   const [search, setSearch] = useState("");
@@ -221,21 +221,13 @@ const EbookManagement = () => {
                               </div>
                             </td>
                             <td className="py-3  ">
-                              <div className="flex gap-2">
+                              <div className="">
                                 <button
                                   className="border border-[#FFEBBC] h-7 w-7 flex items-center justify-center rounded-full cursor-pointer"
                                   onClick={() => {}}
                                 >
                                   <Link to={`/ebook-request/${ebook.id}`}>
                                     {ebook.action.icon1}
-                                  </Link>
-                                </button>
-                                <button
-                                  className="border border-[#FFEBBC] h-7 w-7 flex items-center justify-center rounded-full cursor-pointer"
-                                  onClick={() => {}}
-                                >
-                                  <Link to={`/request/${ebook.id}`}>
-                                    {ebook.action.icon2}
                                   </Link>
                                 </button>
                               </div>

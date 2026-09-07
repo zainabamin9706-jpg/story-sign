@@ -1,9 +1,14 @@
 import { useParams } from "react-router-dom";
 import Ebbok from "../../assets/Ebbok.png";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import { requests } from "./data/requestData";
 const Request = () => {
   const { id } = useParams();
+  const request = requests.find((request) => request.id.toString() === id);
+  if (!request) {
+    return <div>Request not found</div>;
+  }
   return (
     <>
       <div className="bg-[#313131] min-h-screen w-full ">
@@ -27,7 +32,7 @@ const Request = () => {
                           Reader:
                         </div>
                         <div className="font-bold text-[#FFEBBC] text-[16px]">
-                          Aerna Dianal
+                          {request.reader.name}
                         </div>
                       </div>
                       <div className="font-['Nunito'] flex gap-5 items-center  mt-5">
@@ -35,7 +40,7 @@ const Request = () => {
                           Author:
                         </div>
                         <div className="font-bold text-[#FFEBBC] text-[15px]">
-                          Cordell Edwards
+                          {request.author.name}
                         </div>
                       </div>
                       <div className="font-['Nunito'] flex gap-5 items-center  mt-5">
@@ -43,11 +48,21 @@ const Request = () => {
                           Requested Date:
                         </div>
                         <div className="font-normal text-[#FFEBBC] text-[13px]">
-                          22 June,2026
+                          {request.date}
                         </div>
                       </div>
-                      <div className="text-[#FFEBBC] mt-4 border text-[14px] px-3 py-1 bg-[#FFEBBC33] border-[#FFEBBC] rounded-md text-center w-20">
-                        Pending
+                      <div
+                        className={`mt-4 border text-[14px] px-3 py-1 rounded-md text-center w-24
+                          ${
+                            request.status === "Pending"
+                              ? "text-[#FFEBBC] bg-[#FFEBBC33] border-[#FFEBBC]"
+                              : request.status === "Delivered"
+                                ? "text-[#08BF0E] bg-[#0C884C33] border-[#08BF0E]"
+                                : "text-[#D92828] bg-[#D928281A] border-[#D92828]"
+                          }
+                        `}
+                      >
+                        {request.status}
                       </div>
                     </div>
                   </div>

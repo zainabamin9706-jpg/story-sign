@@ -4,20 +4,18 @@ import { LuBadgeDollarSign } from "react-icons/lu";
 import { LuUsersRound } from "react-icons/lu";
 import { LiaBookReaderSolid } from "react-icons/lia";
 import { HiOutlineUsers } from "react-icons/hi";
-
 import img from "../../assets/img.png";
 import { LineChart } from "@mantine/charts";
 import { BarChart } from "@mantine/charts";
 import { User } from "./types/User";
 import { revenuedata } from "./data/revenueData";
 import { RequestData } from "./types/Request";
-import CardLayout from "../cardLayout";
 import { IconEye } from "@tabler/icons-react";
 import { usersdata } from "./data/userData";
-import Layout from "../Layout";
 import { userGrowthData } from "./data/userGrowthData";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const Dashboard = () => {
   const [userList, setUserList] = useState<User[]>(usersdata);
   const [requestList, setRequestList] = useState<RequestData[]>(requests);

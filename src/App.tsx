@@ -28,7 +28,7 @@ import ReaderManagement from "./screens/readerManagement/readerManagement";
 import ReportAnalytics from "./screens/report&analytics/reportAnalytics";
 import AddPlan from "./screens/subscriptionPlan/addPlan";
 import SubscriptionPlan from "./screens/subscriptionPlan/SusbscriptionPlan";
-import Request from "./screens/ebookManagement/request";
+import Request from "./screens/autographRequest/request";
 import Settings from "./screens/settings/settings";
 const App = () => {
   const [email, setEmail] = useState("");

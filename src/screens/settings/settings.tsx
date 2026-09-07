@@ -1,9 +1,9 @@
 import { TextInput, Select, Button } from "@mantine/core";
 import { useState } from "react";
 import { LuPencil } from "react-icons/lu";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import ButtonLayout from "../buttonsLayout";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const Settings = () => {
   const [platformName, setPlatformName] = useState("Storysign");

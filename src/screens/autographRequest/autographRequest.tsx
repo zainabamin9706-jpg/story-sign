@@ -5,12 +5,13 @@ import { IoFunnelOutline } from "react-icons/io5";
 import bookcheck from "../../assets/bookcheck.png";
 import sun from "../../assets/sun.png";
 import tick from "../../assets/tick.png";
-import CardLayout from "../cardLayout";
-import NavbarBP from "../navbarBP";
 import cancel from "../../assets/cancel.png";
-import SidebarBP from "../sidebarBP";
 import { requests } from "./data/requestData";
 import { Request } from "./types/Request";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import { Link } from "react-router-dom";
 
 const AutographRequest = () => {
   const [requestList, setRequestList] = useState<Request[]>(requests);
@@ -20,7 +21,7 @@ const AutographRequest = () => {
       return " border border-[#08BF0E] text-[#08BF0E] bg-[#0C884C33]";
     }
 
-    if (status === "In Progress") {
+    if (status === "Pending") {
       return " border border-[#FFEBBC] text-[#FFEBBC] bg-[#FFEBBC33]";
     }
 
@@ -40,7 +41,7 @@ const AutographRequest = () => {
     (reader) => reader.status === "Delivered",
   ).length;
   const inProgressRequests = requestList.filter(
-    (reader) => reader.status === "In Progress",
+    (reader) => reader.status === "Pending",
   ).length;
   const RejectedRequests = requestList.filter(
     (authors) => authors.status === "Rejected",
@@ -152,8 +153,8 @@ const AutographRequest = () => {
                           Delivered
                         </Menu.Item>
 
-                        <Menu.Item onClick={() => setFilters("In Progress")}>
-                          In Progress
+                        <Menu.Item onClick={() => setFilters("Pending")}>
+                          Pending
                         </Menu.Item>
 
                         <Menu.Item onClick={() => setFilters("Rejected")}>
@@ -228,12 +229,14 @@ const AutographRequest = () => {
                             </td>
                             <td className="py-3  ">
                               <div className="flex gap-2">
-                                <button
-                                  className="border border-[#FFEBBC] h-7 w-7 flex items-center justify-center rounded-full cursor-pointer"
-                                  onClick={() => {}}
-                                >
-                                  {request.action}
-                                </button>
+                                <Link to={`/request/${request.id}`}>
+                                  <button
+                                    className="border border-[#FFEBBC] h-7 w-7 flex items-center justify-center rounded-full cursor-pointer"
+                                    onClick={() => {}}
+                                  >
+                                    {request.action}
+                                  </button>
+                                </Link>
                               </div>
                             </td>
                           </tr>

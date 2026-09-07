@@ -2,9 +2,11 @@ import { TextInput, Textarea, Button, Paper, SimpleGrid } from "@mantine/core";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { privacy } from "./data/privacyData";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { Privacy } from "./types/Privacy";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import { notifications } from "@mantine/notifications";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const EditPolicy = () => {
   const navigate = useNavigate();
@@ -75,9 +77,13 @@ const EditPolicy = () => {
     }
 
     sessionStorage.setItem("newPrivacy", JSON.stringify(updatedPolicies));
-
-    alert("Privacy Policy has been updated successfully.");
-
+    notifications.show({
+      title: "Something went wrong!",
+      color: "red",
+      icon: <MdOutlineReportGmailerrorred />,
+      message: "Privacy Policy has been updated successfully.",
+      position: "top-center",
+    });
     navigate("/privacy-policy");
   };
 

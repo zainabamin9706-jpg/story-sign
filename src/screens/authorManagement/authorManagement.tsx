@@ -1,18 +1,17 @@
-import { Button, Menu, Pagination, TextInput } from "@mantine/core";
+import { Button, Menu, Modal, Pagination, TextInput } from "@mantine/core";
 import { IconSearch, IconUserOff, IconX } from "@tabler/icons-react";
 import { useState } from "react";
 import { FiUserCheck } from "react-icons/fi";
 import { HiOutlineUsers } from "react-icons/hi";
 import { IoFunnelOutline } from "react-icons/io5";
 import { RiUserForbidLine } from "react-icons/ri";
-import { Link } from "react-router-dom";
-import CardLayout from "../cardLayout";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import Success from "../success";
 import { authors } from "./data/authorData";
 import { Author } from "./types/Author";
-import Modal from "../modal";
+import { Link } from "react-router-dom";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 const AuhtorManagement = () => {
   const [authorList, setAuthorList] = useState<Author[]>(authors);
   const [successOpen, setSuccessOpen] = useState(false);

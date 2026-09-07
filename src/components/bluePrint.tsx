@@ -1,10 +1,9 @@
 import { ReactNode } from "react";
-import Background from "../../assets/Background.jpg";
-import logo from "../../assets/logo.png";
+import logo from "../assets/logo.png";
+import Background from "../assets/Background.jpg";
 interface BluePrintProps {
   children: ReactNode;
 }
-
 const BluePrint = ({ children }: BluePrintProps) => {
   return (
     <>

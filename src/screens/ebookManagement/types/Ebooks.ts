@@ -13,6 +13,5 @@ export interface Ebooks {
   status: "Signed" | "Unsigned" | "Rejected";
   action: {
     icon1: ReactNode;
-    icon2: ReactNode;
   };
 }

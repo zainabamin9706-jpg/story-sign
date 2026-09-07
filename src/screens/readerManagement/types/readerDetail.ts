@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-export interface ReaderBook {
+export interface ReaderDetail {
   cover: string;
   name: string;
   signedBy: string;

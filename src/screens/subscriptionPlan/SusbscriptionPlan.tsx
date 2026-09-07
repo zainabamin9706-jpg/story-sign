@@ -3,12 +3,12 @@ import { IconSearch } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { IoFunnelOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { defaultPlans } from "./data/planData";
 import { subscription } from "./data/subscribeData";
 import { Plan } from "./types/Plan";
 import { Subscribe } from "./types/Subscribe";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const SubscriptionPlan = () => {
   const [plans, setPlans] = useState<Plan[]>(defaultPlans);

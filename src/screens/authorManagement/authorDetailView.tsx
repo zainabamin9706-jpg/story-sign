@@ -5,10 +5,11 @@ import { useState } from "react";
 import { IoFunnelOutline } from "react-icons/io5";
 import readerdetail from "../../assets/readerdetail.png";
 import { IconSearch } from "@tabler/icons-react";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
+
 import { authorBooks } from "./data/authorDetailData";
 import { AuthorBook } from "./types/AuthorBook";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const AuthorDetailView = () => {
   const [bookList, setBookList] = useState<AuthorBook[]>(authorBooks);

@@ -2,10 +2,12 @@ import { PasswordInput } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import BluePrint from "./bluePrint";
 import { AppContext } from "../../hooks/context/context";
-import AuthenticationButtonLayout from "./authenticationButtonLayout";
 import TitleDescLayout from "../../components/titleDescLayout";
+import { notifications } from "@mantine/notifications";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import AuthenticationButtonLayout from "../../components/authenticationButtonLayout";
+import BluePrint from "../../components/bluePrint";
 
 const NewPassword = () => {
   const navigate = useNavigate();
@@ -30,11 +32,24 @@ const NewPassword = () => {
   });
   const handleValidationError = (errors: typeof form.errors) => {
     if (errors.password) {
-      alert(errors.password);
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: errors.password,
+        position: "top-center",
+      });
       return;
     }
     if (errors.confirmPassword) {
-      alert(errors.confirmPassword);
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: errors.confirmPassword,
+        position: "top-center",
+      });
+
       return;
     }
   };

@@ -3,10 +3,10 @@ import { IconPencil, IconSearch } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { IoFunnelOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { Fee } from "./data/autographfeeData";
 import { AutographFee } from "./types/AutographFee";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const AutographFee = () => {
   const [feeList, setFeeList] = useState<AutographFee[]>(Fee);
   const [search, setSearch] = useState("");

@@ -1,12 +1,10 @@
-import { TextInput, Textarea } from "@mantine/core";
+import { Paper, SimpleGrid, TextInput, Textarea } from "@mantine/core";
 import { useState } from "react";
-import { Button } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
-import { Paper, SimpleGrid } from "@mantine/core";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import Success from "../success";
-import ButtonLayout from "../buttonsLayout";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 const AddPolicy = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");

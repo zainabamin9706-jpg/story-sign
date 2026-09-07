@@ -1,11 +1,13 @@
 import { PasswordInput, TextInput } from "@mantine/core";
 import { formRootRule, isNotEmpty, useForm } from "@mantine/form";
 import { useContext } from "react";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
-import BluePrint from "./bluePrint";
-import { AppContext } from "../../hooks/context/context";
-import AuthenticationButtonLayout from "./authenticationButtonLayout";
 import TitleDescLayout from "../../components/titleDescLayout";
+import { AppContext } from "../../hooks/context/context";
+import { notifications } from "@mantine/notifications";
+import AuthenticationButtonLayout from "../../components/authenticationButtonLayout";
+import BluePrint from "../../components/bluePrint";
 const LoginPage = () => {
   const navigate = useNavigate();
   const form = useForm<{
@@ -45,7 +47,14 @@ const LoginPage = () => {
       values.user.Email !== registeredEmail ||
       values.user.Password !== registeredPassword
     ) {
-      alert("Invalid email or password");
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: "Invalid Email or Password",
+        position: "top-center",
+      });
+
       return;
     }
     setEmail(values.user.Email);

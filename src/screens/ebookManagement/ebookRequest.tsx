@@ -1,11 +1,12 @@
 import { RiDeleteBinLine } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
-import Ebbok from "../../assets/Ebbok.png";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-
+import { useNavigate, useParams } from "react-router-dom";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import { ebooks } from "./data/ebookData";
 const EbookRequest = () => {
   const navigate = useNavigate();
+  const { id } = useParams();
+  const ebook = ebooks.find((item) => item.id === id);
   return (
     <>
       <div className="bg-[#313131] min-h-screen w-full ">
@@ -18,19 +19,19 @@ const EbookRequest = () => {
                   <div className="flex flex-row  justify-between text-right w-full">
                     <div className="flex gap-10 mt-3 ">
                       <img
-                        src={Ebbok}
+                        src={ebook?.bookdetails.img}
                         className="w-50 h-50 m-3 object-cover border border-[#FFEBBC]"
                       />
                       <div className=" flex flex-col ">
                         <div className="font-['Nunito'] font-semibold text-[19px] mt-1 text-[#FFEBBC]">
-                          The Origin of Species
+                          {ebook?.bookdetails.name}
                         </div>
                         <div className="font-['Nunito'] flex gap-5 items-center  mt-5">
                           <div className="font-normal text-[12.5px] text-[#CCCCCC]">
                             Uploaded By:
                           </div>
                           <div className="font-bold text-[#FFEBBC] text-[16px]">
-                            Aerna Dianal
+                            {ebook?.uploadedby.name}
                           </div>
                         </div>
                         <div className="font-['Nunito'] flex gap-5 items-center  mt-5">
@@ -38,7 +39,7 @@ const EbookRequest = () => {
                             Signed By:
                           </div>
                           <div className="font-bold text-[#FFEBBC] text-[15px]">
-                            Cordell Edwards
+                            {ebook?.uploadedby.name}
                           </div>
                         </div>
                         <div className="font-['Nunito'] flex gap-5 items-center  mt-5">
@@ -46,11 +47,17 @@ const EbookRequest = () => {
                             Signed Date:
                           </div>
                           <div className="font-normal text-[#FFEBBC] text-[13px]">
-                            22 June,2026
+                            {ebook?.date}
                           </div>
                         </div>
-                        <div className="text-[#FFEBBC] mt-4 border text-[14px] px-3 py-1 bg-[#FFEBBC33] border-[#FFEBBC] rounded-md text-center w-20">
-                          Signed
+                        <div
+                          className={`mt-4 border text-[14px] px-3 py-1 rounded-md text-center w-20 ${
+                            ebook?.status === "Signed"
+                              ? "text-[#08BF0E] bg-[#08BF0E33] border-[#08BF0E]"
+                              : "text-[#FFEBBC] bg-[#FFEBBC33] border-[#FFEBBC]"
+                          }`}
+                        >
+                          {ebook?.status}
                         </div>
                       </div>
                     </div>

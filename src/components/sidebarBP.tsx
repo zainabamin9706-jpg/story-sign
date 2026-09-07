@@ -103,10 +103,13 @@ const SidebarBP = () => {
             ele.link === "/ebook-management" &&
             (useMatch("/ebook-management") ||
               useMatch("/ebook-request") ||
-              useMatch("/ebook-request/:id") ||
+              useMatch("/ebook-request/:id"));
+
+          const autographRequestActive =
+            ele.link === "/autograph-request" &&
+            (useMatch("/autograph-request") ||
               useMatch("/request") ||
               useMatch("/request/:id"));
-
           const subscriptionActive =
             ele.link === "/subscription" &&
             (useMatch("/subscription") || useMatch("/add-plan"));
@@ -127,6 +130,7 @@ const SidebarBP = () => {
             ele.link !== "/reader-management" &&
             ele.link !== "/author-management" &&
             ele.link !== "/ebook-management" &&
+            ele.link !== "/autograph-request" &&
             ele.link !== "/subscription" &&
             ele.link !== "/autograph-fee" &&
             ele.link !== "/notification-management" &&
@@ -143,6 +147,7 @@ const SidebarBP = () => {
             notificationActive ||
             privacyActive ||
             faqActive ||
+            autographRequestActive ||
             normalActive;
 
           return active ? (

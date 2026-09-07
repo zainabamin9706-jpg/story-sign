@@ -1,9 +1,11 @@
 import { PinInput } from "@mantine/core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import BluePrint from "./bluePrint";
-import AuthenticationButtonLayout from "./authenticationButtonLayout";
 import TitleDescLayout from "../../components/titleDescLayout";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import { notifications } from "@mantine/notifications";
+import AuthenticationButtonLayout from "../../components/authenticationButtonLayout";
+import BluePrint from "../../components/bluePrint";
 
 const OTP = () => {
   const [otp, setOtp] = useState<string>("");
@@ -19,11 +21,23 @@ const OTP = () => {
   const handleVerify = () => {
     const correctOTP = "111111";
     if (otp.length !== 6) {
-      alert("Please enter the complete 6-digit OTP");
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: "Please enter the complete 6-digit OTP",
+        position: "top-center",
+      });
       return;
     }
     if (otp !== correctOTP) {
-      alert("Invalid OTP");
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: "Invalid OTP",
+        position: "top-center",
+      });
       return;
     }
     navigate("/new-password");

@@ -1,12 +1,13 @@
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
-import { AppContext } from "../../hooks/context/context";
-import BluePrint from "./bluePrint";
-import ButtonLayout from "../buttonsLayout";
-import AuthenticationButtonLayout from "./authenticationButtonLayout";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import TitleDescLayout from "../../components/titleDescLayout";
+import { AppContext } from "../../hooks/context/context";
+import { notifications } from "@mantine/notifications";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import AuthenticationButtonLayout from "../../components/authenticationButtonLayout";
+import BluePrint from "../../components/bluePrint";
 interface FormValues {
   user: {
     Email: string;
@@ -33,7 +34,13 @@ const ForgotPassword = () => {
     const registeredEmail = "john@gmail.com";
 
     if (values.user.Email !== registeredEmail) {
-      alert("Email is not registered");
+      notifications.show({
+        title: "Something went wrong!",
+        color: "red",
+        icon: <MdOutlineReportGmailerrorred />,
+        message: "Email is not registered",
+        position: "top-center",
+      });
       return;
     }
     navigate("/Otp");

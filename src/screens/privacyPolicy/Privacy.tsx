@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { privacy } from "./data/privacyData";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { Privacy } from "./types/Privacy";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const PrivacyPolicy = () => {
   const navigate = useNavigate();
   const [privacyList, setPrivacyList] = useState<Privacy[]>(privacy);

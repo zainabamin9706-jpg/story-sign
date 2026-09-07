@@ -4,15 +4,15 @@ import { IoFunnelOutline } from "react-icons/io5";
 
 import { IconSearch } from "@tabler/icons-react";
 import readerdetail from "../../assets/readerdetail.png";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { readerBooks } from "./data/readerDetailData";
-import { ReaderBook } from "./types/readerDetail";
+import { ReaderDetail } from "./types/readerDetail";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const ReaderDetailView = () => {
-  const [bookList, setBookList] = useState<ReaderBook[]>(readerBooks);
+  const [bookList, setBookList] = useState<ReaderDetail[]>(readerBooks);
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<ReaderBook["status"] | "All">("All");
+  const [filter, setFilter] = useState<ReaderDetail["status"] | "All">("All");
   const filteredBooks = bookList.filter((book) => {
     const matchesSearch =
       `${book.name}${book.signedBy}${book.uploadedDate}${book.status}`

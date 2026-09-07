@@ -1,11 +1,11 @@
 import { Button, Paper, SimpleGrid, TextInput, Textarea } from "@mantine/core";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 import { Faq } from "./types/FAQ";
-import Success from "../success";
-import ButtonLayout from "../buttonsLayout";
 const AddFaq = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");

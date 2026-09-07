@@ -2,10 +2,10 @@ import { Button, Paper, SimpleGrid, TextInput } from "@mantine/core";
 import { useState } from "react";
 import { RiPencilLine } from "react-icons/ri";
 import readerdetail from "../../assets/readerdetail.png";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import Success from "../success";
-import ButtonLayout from "../buttonsLayout";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 
 const Profile = () => {
   const savedProfile = JSON.parse(

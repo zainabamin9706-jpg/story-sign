@@ -9,10 +9,10 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plan } from "./types/Plan";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import Success from "../success";
-import ButtonLayout from "../buttonsLayout";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 const AddPlan = () => {
   const navigate = useNavigate();
   const [planName, setPlanName] = useState("");

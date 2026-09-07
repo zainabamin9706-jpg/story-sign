@@ -19,7 +19,6 @@ export const ebooks: Ebooks[] = [
     status: "Signed",
     action: {
       icon1: <IconEye className="text-[#FFEBBC] size-5 cursor-pointer" />,
-      icon2: <MdRequestPage className="text-[#FFEBBC] size-5 cursor-pointer" />,
     },
   },
   {
@@ -37,7 +36,6 @@ export const ebooks: Ebooks[] = [
     status: "Unsigned",
     action: {
       icon1: <IconEye className="text-[#FFEBBC] size-5 cursor-pointer" />,
-      icon2: <MdRequestPage className="text-[#FFEBBC] size-5 cursor-pointer" />,
     },
   },
   {
@@ -55,7 +53,6 @@ export const ebooks: Ebooks[] = [
     status: "Signed",
     action: {
       icon1: <IconEye className="text-[#FFEBBC] size-5 cursor-pointer" />,
-      icon2: <MdRequestPage className="text-[#FFEBBC] size-5 cursor-pointer" />,
     },
   },
   {
@@ -73,7 +70,6 @@ export const ebooks: Ebooks[] = [
     status: "Unsigned",
     action: {
       icon1: <IconEye className="text-[#FFEBBC] size-5 cursor-pointer" />,
-      icon2: <MdRequestPage className="text-[#FFEBBC] size-5 cursor-pointer" />,
     },
   },
   {
@@ -91,7 +87,6 @@ export const ebooks: Ebooks[] = [
     status: "Signed",
     action: {
       icon1: <IconEye className="text-[#FFEBBC] size-5 cursor-pointer" />,
-      icon2: <MdRequestPage className="text-[#FFEBBC] size-5 cursor-pointer" />,
     },
   },
 ];

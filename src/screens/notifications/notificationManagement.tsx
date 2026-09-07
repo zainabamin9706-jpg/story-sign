@@ -2,10 +2,10 @@ import { Pagination, TextInput } from "@mantine/core";
 import { IconSearch } from "@tabler/icons-react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { notification } from "./data/notificationData";
 import { Notification } from "./types/Notification";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const NotificationManagement = () => {
   const [notificationList, setNotificationList] =
     useState<Notification[]>(notification);

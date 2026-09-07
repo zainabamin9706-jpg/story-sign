@@ -3,10 +3,10 @@ import { TextInput } from "@mantine/core";
 import { Button, Paper } from "@mantine/core";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
-import Success from "../success";
-import ButtonLayout from "../buttonsLayout";
+import ButtonLayout from "../../components/buttonsLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
+import Success from "../../components/success";
 
 const UpdatedFee = () => {
   const [fee, setFee] = useState("");

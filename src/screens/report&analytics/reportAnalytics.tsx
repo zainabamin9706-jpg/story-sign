@@ -3,13 +3,13 @@ import { useState } from "react";
 import { HiOutlineUsers } from "react-icons/hi";
 import { LuBadgeDollarSign, LuUserCheck } from "react-icons/lu";
 import bookmarked from "../../assets/bookmarked.png";
-import CardLayout from "../cardLayout";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { artist } from "./data/artistData";
 import { revenuedata } from "./data/revenueData";
 import { userGrowthData } from "./data/userGrowthData";
 import { Artist } from "./types/Artist";
+import CardLayout from "../../components/cardLayout";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 const data3 = [
   { month: "Jan", requests: 68 },
   { month: "Feb", requests: 40 },

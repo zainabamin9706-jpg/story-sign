@@ -2,10 +2,10 @@ import { Pagination } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { RiDeleteBin6Line, RiPencilLine } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { faqs } from "./data/questionData";
 import { Faq } from "./types/FAQ";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const FAQ = () => {
   const navigate = useNavigate();

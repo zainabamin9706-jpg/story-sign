@@ -11,6 +11,6 @@ export interface Request {
   };
   book: string;
   date: string;
-  status: "In Progress" | "Delivered" | "Rejected";
+  status: "Pending" | "Delivered" | "Rejected";
   action: ReactNode;
 }

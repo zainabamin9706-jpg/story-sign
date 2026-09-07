@@ -1,10 +1,12 @@
 import { Button, Paper, SimpleGrid, TextInput, Textarea } from "@mantine/core";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import NavbarBP from "../navbarBP";
-import SidebarBP from "../sidebarBP";
 import { faqs } from "./data/questionData";
 import { Faq } from "./types/FAQ";
+import { notifications } from "@mantine/notifications";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import NavbarBP from "../../components/navbarBP";
+import SidebarBP from "../../components/sidebarBP";
 
 const EditFAQ = () => {
   const navigate = useNavigate();
@@ -72,7 +74,14 @@ const EditFAQ = () => {
       ];
     }
     sessionStorage.setItem("newQuestions", JSON.stringify(updatedQuestions));
-    alert("FAQ has been updated successfully.");
+    notifications.show({
+      title: "Something went wrong!",
+      color: "red",
+      icon: <MdOutlineReportGmailerrorred />,
+      message: "FAQ has been updated successfully.",
+      position: "top-center",
+    });
+
     navigate("/faqs");
   };
 
