@@ -5,7 +5,10 @@ import ButtonLayout from "../../components/buttonsLayout";
 import NavbarBP from "../../components/navbarBP";
 import SidebarBP from "../../components/sidebarBP";
 
+import { AppShell } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 const Settings = () => {
+  const [opened, { toggle }] = useDisclosure();
   const [platformName, setPlatformName] = useState("Storysign");
   const [email, setEmail] = useState("sign@gmail.com");
   const [url, setUrl] = useState("www.storysign.com");
@@ -37,10 +40,39 @@ const Settings = () => {
     setIsEditing(false);
   };
   return (
-    <div className="min-h-screen w-full bg-[#313131]">
-      <NavbarBP Title="Platform Settings" />
-      <div className="flex flex-row gap-4 w-full">
+    <AppShell
+      className="mt-1"
+      h="100vh"
+      header={{ height: 90 }}
+      navbar={{
+        width: {
+          base: "33.33%",
+          sm: 140,
+        },
+        breakpoint: "sm",
+        collapsed: { mobile: !opened },
+      }}
+      padding={0}
+      withBorder={false}
+      styles={{
+        main: {
+          backgroundColor: "#313131",
+        },
+        header: {
+          backgroundColor: "#313131",
+        },
+        navbar: {
+          backgroundColor: "#313131",
+        },
+      }}
+    >
+      <AppShell.Header className="bg-[#313131]">
+        <NavbarBP title="Platform Settings" opened={opened} toggle={toggle} />
+      </AppShell.Header>
+      <AppShell.Navbar className="bg-[#313131]">
         <SidebarBP />
+      </AppShell.Navbar>
+      <AppShell.Main>
         <div className="w-full p-7 mr-4 text-white h-full bg-[#202020] rounded-xl">
           <div className="mb-8 flex items-center justify-between">
             <h1 className="text-xl font-medium text-[#FFEBBC]">
@@ -56,7 +88,9 @@ const Settings = () => {
             )}
           </div>
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-12 text-[#FFEBBC] w-1/3">Platform Name</div>
+            <div className="text-[14px] lg:text-12 text-[#FFEBBC] w-1/3">
+              Platform Name
+            </div>
             {isEditing ? (
               <TextInput
                 value={draftPlatformName}
@@ -81,7 +115,9 @@ const Settings = () => {
             )}
           </div>
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-12 text-[#FFEBBC] w-1/3">Support Email</div>
+            <div className="text-[14px] lg:text-12 text-[#FFEBBC] w-1/3">
+              Support Email
+            </div>
             {isEditing ? (
               <TextInput
                 value={draftEmail}
@@ -104,7 +140,9 @@ const Settings = () => {
             )}
           </div>
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-12 text-[#FFEBBC] w-1/3">Platform URL</div>
+            <div className="text-[14px] lg:text-12 text-[#FFEBBC] w-1/3">
+              Platform URL
+            </div>
 
             {isEditing ? (
               <TextInput
@@ -128,7 +166,7 @@ const Settings = () => {
             )}
           </div>
           <div className="mb-6 flex items-center justify-between">
-            <div className="text-12 text-[#FFEBBC] w-1/3">
+            <div className="text-[14px] lg:text-12 text-[#FFEBBC] w-1/3">
               Ebooks Format Allowed
             </div>
 
@@ -180,8 +218,8 @@ const Settings = () => {
             </div>
           )}
         </div>
-      </div>
-    </div>
+      </AppShell.Main>
+    </AppShell>
   );
 };
 

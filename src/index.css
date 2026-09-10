@@ -7,3 +7,16 @@
   font-size: 13px !important;
   font-weight: 500 !important;
 }
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+@media (max-width: 47.99em) {
+  .mantine-AppShell-navbar {
+    width: 40vw !important;
+  }
+}

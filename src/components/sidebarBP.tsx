@@ -13,6 +13,7 @@ import { AiFillQuestionCircle } from "react-icons/ai";
 import { FaCircleUser } from "react-icons/fa6";
 import { IoMdSettings } from "react-icons/io";
 import { MdLogout } from "react-icons/md";
+
 const list = [
   {
     name: "Dashboard",
@@ -88,8 +89,8 @@ const list = [
 
 const SidebarBP = () => {
   return (
-    <div className="flex flex-col gap-3">
-      <div className="sticky top-5 h-fit mx-2 p-2 lg:w-30 flex flex-col gap-3.5 items-center">
+    <div className="h-full mt-3">
+      <div className="h-full p-2 overflow-y-auto no-scrollbar  overflow-x-hidden  flex flex-col gap-3.5 items-center">
         {list.map((ele) => {
           const readerActive =
             ele.link === "/reader-management" &&

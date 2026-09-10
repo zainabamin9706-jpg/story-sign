@@ -9,5 +9,5 @@ export interface RequestData {
     image: string;
     name: string;
   };
-  bookStatus: "Delivered" | "In Progress" | "Rejected";
+  bookStatus: "Delivered" | "Pending" | "Rejected";
 }

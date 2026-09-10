@@ -1,4 +1,4 @@
-import { ReactNode } from "@tabler/icons-react";
+import { ReactNode } from "react";
 import { Textarea } from "@mantine/core";
 type ActivateUserProps = {
   title: string;

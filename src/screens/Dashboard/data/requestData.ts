@@ -6,7 +6,7 @@ export const requests: RequestData[] = [
     id: 742942,
     bookName: "Things Fall Apart",
     reader: { image: imgage, name: "Cassius Thorne" },
-    bookStatus: "In Progress",
+    bookStatus: "Pending",
     author: { image: person2, name: "Cassius Thorne" },
   },
   {
@@ -14,7 +14,7 @@ export const requests: RequestData[] = [
     bookName: "Things Fall Apart",
     reader: { image: imgage, name: "Emma Thorne" },
 
-    bookStatus: "In Progress",
+    bookStatus: "Pending",
     author: { image: person2, name: "Cassius Thorne" },
   },
   {
