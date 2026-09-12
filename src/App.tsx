@@ -1,6 +1,4 @@
-import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AppContext } from "./hooks/context/context";
 import ForgotPassword from "./screens/authentication/forgotPassword";
 import LoginPage from "./screens/authentication/loginPage";
 import NewPassword from "./screens/authentication/newPassword";
@@ -33,8 +31,6 @@ import Settings from "./screens/settings/settings";
 import PrivateRoutes from "./routes/privateRoutes";
 import PublicRoutes from "./routes/publicRoutes";
 const App = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const router = createBrowserRouter([
     {
       path: "/",
@@ -154,11 +150,7 @@ const App = () => {
       element: <Profile />,
     },
   ]);
-  return (
-    <AppContext.Provider value={{ email, setEmail, password, setPassword }}>
-      <RouterProvider router={router} />
-    </AppContext.Provider>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;

@@ -1,78 +1,69 @@
-import { useState } from "react";
-import { AppContext } from "./context";
+import { useState, type ReactNode } from "react";
+import {
+  AppContext,
+  emptyAuthSession,
+  type AuthSession,
+} from "./context";
 
-interface User {
-  id: string;
-  email: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-  isActive: boolean;
-  avatarUrl: string | null;
-  bio: string | null;
-  createdAt: string;
-  updatedAt: string;
-}
+const readStoredAuth = (): AuthSession => {
+  const storedAuth = sessionStorage.getItem("auth");
+  if (!storedAuth) return emptyAuthSession;
 
-interface AppContextType {
-  accessToken: string;
-  setAccessToken: (accessToken: string) => void;
+  try {
+    const parsed = JSON.parse(storedAuth) as Partial<AuthSession> & {
+      token?: string;
+    };
+    const accessToken = parsed.accessToken ?? parsed.token ?? "";
 
-  tokenType: string;
-  setTokenType: (tokenType: string) => void;
+    if (!accessToken || !parsed.user) {
+      sessionStorage.removeItem("auth");
+      return emptyAuthSession;
+    }
 
-  expiresIn: number;
-  setExpiresIn: (expiresIn: number) => void;
-
-  refreshToken: string;
-  setRefreshToken: (refreshToken: string) => void;
-
-  refreshExpiresIn: number;
-  setRefreshExpiresIn: (refreshExpiresIn: number) => void;
-
-  refreshExpiresAt: string;
-  setRefreshExpiresAt: (refreshExpiresAt: string) => void;
-
-  user: User | null;
-  setUser: (user: User | null) => void;
-}
+    return {
+      accessToken,
+      tokenType: parsed.tokenType ?? "Bearer",
+      expiresIn: parsed.expiresIn ?? 0,
+      refreshToken: parsed.refreshToken ?? "",
+      refreshExpiresIn: parsed.refreshExpiresIn ?? 0,
+      refreshExpiresAt: parsed.refreshExpiresAt ?? "",
+      user: parsed.user,
+    };
+  } catch {
+    sessionStorage.removeItem("auth");
+    return emptyAuthSession;
+  }
+};
 
 export const AppContextProvider = ({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
-  const [accessToken, setAccessToken] = useState("");
-  const [tokenType, setTokenType] = useState("Bearer");
-  const [expiresIn, setExpiresIn] = useState(0);
-  const [refreshToken, setRefreshToken] = useState("");
-  const [refreshExpiresIn, setRefreshExpiresIn] = useState(0);
-  const [refreshExpiresAt, setRefreshExpiresAt] = useState("");
-  const [user, setUser] = useState<User | null>(null);
+  const [authSession, setAuthState] = useState<AuthSession>(readStoredAuth);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const setAuthSession = (session: AuthSession) => {
+    sessionStorage.setItem("auth", JSON.stringify(session));
+    setAuthState(session);
+  };
+
+  const clearAuthSession = () => {
+    sessionStorage.removeItem("auth");
+    setAuthState(emptyAuthSession);
+  };
 
   return (
     <AppContext.Provider
       value={{
-        accessToken,
-        setAccessToken,
-
-        tokenType,
-        setTokenType,
-
-        expiresIn,
-        setExpiresIn,
-
-        refreshToken,
-        setRefreshToken,
-
-        refreshExpiresIn,
-        setRefreshExpiresIn,
-
-        refreshExpiresAt,
-        setRefreshExpiresAt,
-
-        user,
-        setUser,
+        ...authSession,
+        setAuthSession,
+        clearAuthSession,
+        email,
+        setEmail,
+        password,
+        setPassword,
       }}
     >
       {children}

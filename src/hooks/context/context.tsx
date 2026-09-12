@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface User {
+export interface User {
   id: string;
   email: string;
   firstName: string;
@@ -13,48 +13,41 @@ interface User {
   updatedAt: string;
 }
 
-interface AppContextType {
+export interface AuthSession {
   accessToken: string;
-  setAccessToken: (accessToken: string) => void;
-
   tokenType: string;
-  setTokenType: (tokenType: string) => void;
-
   expiresIn: number;
-  setExpiresIn: (expiresIn: number) => void;
-
   refreshToken: string;
-  setRefreshToken: (refreshToken: string) => void;
-
   refreshExpiresIn: number;
-  setRefreshExpiresIn: (refreshExpiresIn: number) => void;
-
   refreshExpiresAt: string;
-  setRefreshExpiresAt: (refreshExpiresAt: string) => void;
-
   user: User | null;
-  setUser: (user: User | null) => void;
 }
 
-export const AppContext = createContext<AppContextType>({
+interface AppContextType extends AuthSession {
+  setAuthSession: (session: AuthSession) => void;
+  clearAuthSession: () => void;
+  email: string;
+  setEmail: (email: string) => void;
+  password: string;
+  setPassword: (password: string) => void;
+}
+
+export const emptyAuthSession: AuthSession = {
   accessToken: "",
-  setAccessToken: () => {},
-
   tokenType: "Bearer",
-  setTokenType: () => {},
-
   expiresIn: 0,
-  setExpiresIn: () => {},
-
   refreshToken: "",
-  setRefreshToken: () => {},
-
   refreshExpiresIn: 0,
-  setRefreshExpiresIn: () => {},
-
   refreshExpiresAt: "",
-  setRefreshExpiresAt: () => {},
-
   user: null,
-  setUser: () => {},
+};
+
+export const AppContext = createContext<AppContextType>({
+  ...emptyAuthSession,
+  setAuthSession: () => {},
+  clearAuthSession: () => {},
+  email: "",
+  setEmail: () => {},
+  password: "",
+  setPassword: () => {},
 });

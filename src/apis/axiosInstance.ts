@@ -9,8 +9,15 @@ const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use((config) => {
   const auth = sessionStorage.getItem("auth");
   if (auth) {
-    const { token } = JSON.parse(auth);
-    config.headers.Authorization = `Bearer ${token}`;
+    try {
+      const { accessToken, token, tokenType = "Bearer" } = JSON.parse(auth);
+      const authToken = accessToken ?? token;
+      if (authToken) {
+        config.headers.Authorization = `${tokenType} ${authToken}`;
+      }
+    } catch {
+      sessionStorage.removeItem("auth");
+    }
   }
   return config;
 });
