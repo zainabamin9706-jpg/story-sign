@@ -30,13 +30,20 @@ import AddPlan from "./screens/subscriptionPlan/addPlan";
 import SubscriptionPlan from "./screens/subscriptionPlan/SusbscriptionPlan";
 import Request from "./screens/autographRequest/request";
 import Settings from "./screens/settings/settings";
+import PrivateRoutes from "./routes/privateRoutes";
+import PublicRoutes from "./routes/publicRoutes";
 const App = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <LoginPage />,
+      element: (
+        <PublicRoutes>
+          {" "}
+          <LoginPage />
+        </PublicRoutes>
+      ),
     },
     {
       path: "/forgot-password",
@@ -50,7 +57,14 @@ const App = () => {
       path: "/new-password",
       element: <NewPassword />,
     },
-    { path: "/dashboard", element: <Dashboard /> },
+    {
+      path: "/dashboard",
+      element: (
+        <PrivateRoutes>
+          <Dashboard />
+        </PrivateRoutes>
+      ),
+    },
     { path: "/reader-management", element: <ReaderManagement /> },
     { path: "/reader-detail-view", element: <ReaderDetailView /> },
     { path: "/author-management", element: <AuhtorManagement /> },

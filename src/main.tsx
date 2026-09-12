@@ -6,10 +6,14 @@ import App from "./App";
 import "./index.css";
 import "@mantine/core/styles.css";
 import "@mantine/notifications/styles.css";
+import { AppContextProvider } from "./hooks/context/provider";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <MantineProvider>
     <Notifications />
-    <App />
+    <AppContextProvider>
+      {" "}
+      <App />
+    </AppContextProvider>
   </MantineProvider>,
 );
